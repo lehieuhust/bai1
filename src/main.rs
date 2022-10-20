@@ -1,5 +1,6 @@
 use std::{io, ops::Index};
 use std::io::Read;
+use std::str::Split;
 
 fn bai_1() {
     println!("bai 1");
@@ -28,6 +29,25 @@ fn bai_1() {
     }
 }
 
+fn bai_2() {
+    let input = "adbcdaDd".to_lowercase();
+    let mut input_ch = String::new();
+    std::io::stdin().read_line(&mut input_ch);
+    let input_ch = input_ch.to_lowercase().chars().next().unwrap();
+    println!("input_ch: {}", input_ch);
+
+    let mut str: String = (*input).to_string();
+    let mut cnt = 0;
+    for (i, ch) in input.chars().enumerate() {
+        if input_ch == ch {
+            str.remove(i - cnt);
+            cnt += 1;
+        }
+    }
+    println!("str: {}", str);
+}
+
 fn main() {
     bai_1();
+    bai_2();
 }
